@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sya Barber — Fresh Cuts. Great Vibes. Montréal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --cobalt:#1a3aa8;
+    --cobalt-deep:#0f2270;
+    --orange:#ee6a23;
+    --orange-deep:#c8470c;
+    --cream:#f3e7cf;
+    --sand:#e8d6b3;
+    --coral:#ff6f5e;
+    --coral-deep:#e84a37;
+    --ink:#0c0c10;
+    --paper:#fbf6ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;}
+  body{overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+
+  .display{font-family:'Anton',sans-serif;letter-spacing:-0.01em;line-height:0.85;text-transform:uppercase;}
+  .display-2{font-family:'Archivo Black',sans-serif;letter-spacing:-0.02em;text-transform:uppercase;line-height:0.9;}
+  .mono{font-family:'DM Mono',monospace;letter-spacing:0.02em;}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+    transition:background .3s ease, backdrop-filter .3s ease, color .3s ease;
+    color:var(--cream);
+  }
+  .nav.scrolled{
+    background:rgba(251,246,236,0.92);
+    backdrop-filter:blur(12px);
+    color:var(--ink);
+    border-bottom:1px solid rgba(12,12,16,0.08);
+  }
+  .nav .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Archivo Black',sans-serif;
+    font-size:18px;letter-spacing:0.02em;
+  }
+  .brand-mark{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--coral);
+    display:grid;place-items:center;
+    color:var(--ink);
+    font-family:'Archivo Black',sans-serif;
+    font-size:16px;
+    border:2px solid var(--ink);
+  }
+  .nav.scrolled .brand-mark{border-color:var(--ink);}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{
+    font-size:13px;font-weight:600;letter-spacing:0.04em;
+    text-transform:uppercase;
+    position:relative;
+    padding:6px 0;
+  }
+  .nav-links a:hover{opacity:0.7;}
+  .cta-btn{
+    background:var(--coral);
+    color:var(--ink);
+    padding:12px 20px;
+    border-radius:999px;
+    font-family:'Archivo',sans-serif;
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    border:2px solid var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+    display:inline-flex;align-items:center;gap:8px;
+    cursor:pointer;
+  }
+  .cta-btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 0 var(--ink);}
+  .nav .cta-btn{padding:10px 18px;font-size:12px;}
+  .menu-toggle{display:none;background:none;border:0;color:inherit;cursor:pointer;padding:6px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--cobalt);
+    color:var(--cream);
+    height:calc(100vh - 52px);
+    overflow:hidden;
+    padding:70px 28px 0;
+    display:flex;
+    flex-direction:column;
+  }
+  .hero-grid{
+    max-width:1440px;margin:0 auto;
+    display:grid;grid-template-columns:220px 1fr;gap:36px;
+    align-items:center;
+    flex:1;
+    min-height:0;
+    position:relative;
+  }
+  .hero-left{position:relative;z-index:2;}
+  .hero-tag-row{
+    display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 14px;border-radius:999px;
+    font-family:'DM Mono',monospace;
+    font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+    border:1.5px solid var(--cream);
+  }
+  .pill.solid{background:var(--cream);color:var(--cobalt-deep);border-color:var(--cream);}
+  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--coral);}
+  .hero h1{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(48px, 7vw, 120px);
+    line-height:0.85;
+    letter-spacing:-0.015em;
+    color:var(--cream);
+    text-transform:uppercase;
+  }
+  .hero h1 .orange{color:var(--coral);}
+  .hero h1 .cream{color:#ffffff;}
+  .hero h1 .ampbox{
+    display:inline-block;color:var(--coral);
+    transform:translateY(-0.05em);
+    padding-right:0.05em;
+  }
+  .hero-sub{
+    margin-top:12px;
+    font-size:15px;line-height:1.55;
+    color:#ffffff;
+    opacity:1;
+    max-width:480px;
+  }
+  .hero-illus-wrap{
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:38%;
+    pointer-events:none;
+  }
+  .hero-illus{
+    width:100%;height:auto;
+    filter:drop-shadow(0 30px 40px rgba(0,0,0,0.25));
+  }
+  .palm{
+    position:absolute;
+    pointer-events:none;
+  }
+  .palm.left{
+    left:-60px;top:140px;
+    width:200px;
+    transform:scaleX(-1) rotate(-8deg);
+    opacity:0.95;
+  }
+  .palm.right-bg{
+    right:-50px;top:80px;
+    width:240px;
+    opacity:0.4;
+    transform:rotate(6deg);
+  }
+
+  /* GIF placeholder card */
+  .gif-card{
+    width:calc(100% + 28px);
+    margin-left:-28px;
+    align-self:stretch;
+    border-radius:0 18px 18px 0;
+    overflow:hidden;
+    border:2px solid var(--ink);
+    border-left:none;
+    background:var(--ink);
+    box-shadow:6px 6px 0 0 var(--ink);
+    cursor:pointer;
+    transition:transform .2s ease;
+    display:flex;flex-direction:column;
+  }
+  .gif-card:hover{transform:translate(-3px,-3px);}
+  .gif-thumb{
+    flex:1;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 8px, transparent 8px 16px),
+      linear-gradient(160deg, var(--orange) 0%, var(--coral) 50%, var(--cobalt-deep) 100%);
+    position:relative;
+    display:grid;place-items:center;
+    color:var(--cream);
+  }
+  .gif-thumb .label{
+    font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+    background:rgba(0,0,0,0.5);padding:6px 10px;border-radius:4px;
+  }
+  .gif-overlay{
+    position:absolute;inset:0;
+    background:rgba(12,12,16,0);
+    display:flex;align-items:flex-end;justify-content:space-between;
+    padding:14px;
+    transition:background .25s ease;
+    color:var(--cream);
+  }
+  .gif-card:hover .gif-overlay{background:rgba(12,12,16,0.45);}
+  .gif-overlay .ov-text{
+    font-family:'DM Mono',monospace;font-size:11px;
+    letter-spacing:0.12em;text-transform:uppercase;
+    opacity:0;transform:translateY(8px);transition:all .25s ease;
+  }
+  .gif-card:hover .gif-overlay .ov-text{opacity:1;transform:translateY(0);}
+  .gif-overlay .arrow{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--coral);color:var(--ink);
+    display:grid;place-items:center;
+    border:2px solid var(--ink);
+    opacity:0;transform:translateY(8px) rotate(-30deg);
+    transition:all .25s ease;
+  }
+  .gif-card:hover .gif-overlay .arrow{opacity:1;transform:translateY(0) rotate(0);}
+  .gif-corner{
+    position:absolute;top:10px;left:10px;
+    background:var(--coral);color:var(--ink);
+    font-family:'DM Mono',monospace;
+    font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
+    padding:5px 9px;border-radius:4px;
+    border:1.5px solid var(--ink);
+  }
+
+  /* Stats bar */
+  .stats{
+    margin-top:16px;
+    border-top:2px solid var(--cream);
+    border-bottom:2px solid var(--cream);
+    display:grid;grid-template-columns:repeat(4,1fr);
+    background:var(--cobalt);
+    position:relative;
+    z-index:3;
+  }
+  .stat{
+    padding:14px 24px;
+    border-right:1.5px solid rgba(243,231,207,0.25);
+    color:var(--cream);
+  }
+  .stat:last-child{border-right:0;}
+  .stat .num{
+    font-family:'Anton',sans-serif;
+    font-size:38px;letter-spacing:-0.01em;
+    color:#ffffff;
+    line-height:1;
+  }
+  .stat .lbl{
+    font-family:'DM Mono',monospace;
+    font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+    margin-top:8px;opacity:1;color:var(--cream);
+  }
+
+  /* Marquee */
+  .marquee{
+    background:var(--coral);color:var(--ink);
+    border-top:2px solid var(--ink);
+    overflow:hidden;
+    padding:14px 0;
+    display:flex;gap:48px;
+    white-space:nowrap;
+    font-family:'Archivo Black',sans-serif;font-size:18px;
+    letter-spacing:0.02em;text-transform:uppercase;
+  }
+  .marquee-track{display:flex;gap:48px;animation:marquee 30s linear infinite;flex-shrink:0;}
+  .marquee span{display:inline-flex;align-items:center;gap:48px;}
+  .marquee .star{color:var(--cobalt);}
+  @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-100%);}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:120px 28px;}
+  .container{max-width:1280px;margin:0 auto;}
+  .sec-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    margin-bottom:64px;gap:24px;flex-wrap:wrap;
+  }
+  .sec-title{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(56px,8vw,140px);
+    line-height:0.85;letter-spacing:-0.01em;
+    text-transform:uppercase;
+  }
+  .sec-num{
+    font-family:'DM Mono',monospace;
+    font-size:13px;letter-spacing:0.18em;text-transform:uppercase;
+    margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .sec-num::before{
+    content:"";width:32px;height:1.5px;background:currentColor;display:inline-block;
+  }
+
+  /* ---------- HISTOIRE ---------- */
+  .histoire{background:var(--cream);color:var(--ink);}
+  .histoire .grid{
+    display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;
+  }
+  .photo-frame{
+    aspect-ratio:4/5;
+    background:
+      repeating-linear-gradient(45deg, rgba(12,12,16,0.06) 0 12px, transparent 12px 24px),
+      linear-gradient(180deg, var(--sand), var(--orange));
+    border-radius:8px;
+    border:2px solid var(--ink);
+    box-shadow:8px 8px 0 0 var(--ink);
+    position:relative;
+    display:grid;place-items:center;
+    color:var(--ink);
+    overflow:hidden;
+  }
+  .photo-frame .ph-label{
+    font-family:'DM Mono',monospace;font-size:11px;
+    letter-spacing:0.16em;text-transform:uppercase;
+    background:var(--ink);color:var(--cream);
+    padding:8px 14px;border-radius:4px;
+  }
+  .histoire h2{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(56px,7vw,120px);line-height:0.86;
+    text-transform:uppercase;letter-spacing:-0.01em;
+  }
+  .histoire h2 em{font-style:normal;color:var(--coral-deep);}
+  .histoire .body{
+    margin-top:28px;font-size:17px;line-height:1.65;
+    max-width:520px;
+  }
+  .histoire .body p + p{margin-top:18px;}
+  .signature{
+    margin-top:32px;display:flex;align-items:center;gap:14px;
+    font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+  }
+  .sig-mark{
+    font-family:'Anton',sans-serif;font-size:48px;color:var(--cobalt);
+    transform:rotate(-6deg);line-height:1;
+  }
+  .quote-card{
+    margin-top:44px;
+    border:2px solid var(--ink);
+    background:var(--paper);
+    padding:24px 26px;
+    border-radius:12px;
+    box-shadow:6px 6px 0 0 var(--ink);
+    max-width:520px;
+  }
+  .quote-card p{
+    font-family:'Anton',sans-serif;
+    font-size:24px;line-height:1.1;
+    text-transform:uppercase;
+    letter-spacing:-0.005em;
+  }
+  .quote-card p::before{content:"« ";color:var(--coral-deep);}
+  .quote-card p::after{content:" »";color:var(--coral-deep);}
+  .quote-card .by{margin-top:10px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.7;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--cobalt);color:var(--cream);position:relative;overflow:hidden;}
+  .services .palm-deco{
+    position:absolute;right:-80px;bottom:-40px;width:300px;opacity:0.18;
+    pointer-events:none;
+  }
+  .svc-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  .svc-card{
+    background:var(--paper);color:var(--ink);
+    border:2px solid var(--ink);
+    border-radius:14px;
+    padding:24px 22px;
+    display:flex;flex-direction:column;
+    gap:14px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .svc-card:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 0 var(--ink);}
+  .svc-card .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+  .svc-illus{
+    margin:4px -8px 4px;
+    aspect-ratio:1.4/1;
+    border-radius:10px;
+    background:var(--cream);
+    border:1.5px solid rgba(12,12,16,0.15);
+    display:grid;place-items:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .svc-illus img{
+    width:80%;height:80%;
+    object-fit:contain;
+    mix-blend-mode:multiply;
+    transition:transform .25s ease;
+  }
+  .svc-card:hover .svc-illus img{transform:scale(1.04) rotate(-2deg);}
+  .svc-card.featured .svc-illus{background:var(--paper);}
+  .svc-card.addon .svc-illus{background:var(--paper);}
+  .svc-card h3{
+    font-family:'Archivo Black',sans-serif;
+    font-size:22px;line-height:1.05;
+    text-transform:uppercase;letter-spacing:-0.01em;
+    flex:1;
+  }
+  .svc-card .price{
+    font-family:'Anton',sans-serif;font-size:42px;
+    color:var(--coral-deep);line-height:0.9;
+  }
+  .svc-card .desc{
+    font-size:14px;line-height:1.55;opacity:0.9;
+    min-height:42px;
+  }
+  .svc-card .book{
+    margin-top:auto;
+    font-family:'DM Mono',monospace;font-size:12px;
+    letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--cobalt);font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;
+    padding-top:14px;border-top:1.5px dashed rgba(12,12,16,0.2);
+  }
+  .svc-card .book .arr{transition:transform .2s;}
+  .svc-card:hover .book .arr{transform:translateX(4px);}
+  .svc-card.featured{
+    background:var(--orange);color:var(--ink);
+  }
+  .svc-card.featured .price{color:var(--cobalt-deep);}
+  .svc-card.addon{
+    background:var(--coral);color:var(--ink);
+    grid-column:span 1;
+    border-style:dashed;
+  }
+  .svc-card.addon .price{color:var(--cobalt-deep);}
+  .svc-foot{
+    margin-top:36px;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
+    color:var(--cream);
+    font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+    opacity:0.85;
+  }
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio{background:var(--paper);}
+  .ba-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:60px;
+  }
+  .ba-pair{
+    border:2px solid var(--ink);border-radius:12px;overflow:hidden;
+    display:grid;grid-template-columns:1fr 1fr;
+    background:var(--ink);
+  }
+  .ba-half{
+    aspect-ratio:1/1.1;
+    position:relative;
+    display:grid;place-items:end start;
+    padding:12px;
+  }
+  .ba-half.before{
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 10px, transparent 10px 20px),
+      linear-gradient(160deg, #6c6357, #3d362b);
+  }
+  .ba-half.after{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 10px, transparent 10px 20px),
+      linear-gradient(160deg, var(--orange), var(--coral-deep));
+  }
+  .ba-half .tag{
+    font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
+    background:rgba(0,0,0,0.55);color:var(--cream);
+    padding:5px 9px;border-radius:4px;
+  }
+  .gallery-head{
+    display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;
+  }
+  .gallery-head h3{
+    font-family:'Anton',sans-serif;font-size:48px;text-transform:uppercase;letter-spacing:-0.01em;
+  }
+  .ig-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+  }
+  .ig-tile{
+    aspect-ratio:1/1;border-radius:10px;border:2px solid var(--ink);
+    overflow:hidden;position:relative;
+    background:var(--cobalt);
+    transition:transform .2s ease;
+    cursor:pointer;
+  }
+  .ig-tile:hover{transform:scale(1.02);}
+  .ig-tile .pat{
+    position:absolute;inset:0;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.07) 0 8px, transparent 8px 16px);
+  }
+  .ig-tile .ig-corner{
+    position:absolute;top:10px;right:10px;color:var(--cream);
+    font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;
+  }
+  .ig-tile.t1{background:linear-gradient(160deg, var(--cobalt), var(--cobalt-deep));}
+  .ig-tile.t2{background:linear-gradient(160deg, var(--orange), var(--coral-deep));}
+  .ig-tile.t3{background:linear-gradient(160deg, var(--sand), var(--orange));}
+  .ig-tile.t4{background:linear-gradient(160deg, var(--ink), #2a2a35);}
+  .ig-tile.t5{background:linear-gradient(160deg, var(--coral), var(--orange-deep));}
+  .ig-tile.t6{background:linear-gradient(160deg, var(--cobalt-deep), var(--ink));}
+  .ig-tile.t7{background:linear-gradient(160deg, var(--cream), var(--sand));}
+  .ig-tile.t7 .ig-corner{color:var(--ink);}
+  .ig-tile.t8{background:linear-gradient(160deg, var(--orange-deep), var(--ink));}
+  .ig-foot{
+    margin-top:32px;text-align:center;
+  }
+  .pill-link{
+    display:inline-flex;align-items:center;gap:10px;
+    border:2px solid var(--ink);
+    padding:14px 22px;border-radius:999px;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;
+    letter-spacing:0.06em;text-transform:uppercase;
+    transition:all .15s;
+    background:var(--paper);
+  }
+  .pill-link:hover{background:var(--ink);color:var(--cream);}
+
+  /* ---------- CARRIÈRE ---------- */
+  .carriere{background:var(--orange);color:var(--ink);position:relative;overflow:hidden;}
+  .carriere .grid{
+    display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;
+  }
+  .carriere h2{
+    font-family:'Anton',sans-serif;font-size:clamp(56px,8vw,140px);line-height:0.85;
+    text-transform:uppercase;letter-spacing:-0.01em;
+  }
+  .carriere h2 em{font-style:normal;color:var(--cream);background:var(--cobalt);padding:0 0.1em;display:inline-block;}
+  .carriere .body{
+    margin-top:28px;font-size:17px;line-height:1.6;max-width:540px;
+  }
+  .carriere .checks{
+    margin-top:30px;display:grid;gap:12px;
+  }
+  .check-row{
+    display:flex;align-items:center;gap:14px;
+    font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;
+  }
+  .check-row .dot{
+    width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--orange);
+    display:grid;place-items:center;font-family:'Archivo Black',sans-serif;font-size:14px;
+  }
+  .carriere .cta-area{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;}
+  .carriere .side{
+    background:var(--cobalt);color:var(--cream);
+    border:2px solid var(--ink);border-radius:14px;
+    padding:32px;
+    box-shadow:8px 8px 0 0 var(--ink);
+  }
+  .carriere .side .eyebrow{color:var(--coral);}
+  .carriere .side h3{
+    font-family:'Anton',sans-serif;font-size:42px;line-height:0.95;text-transform:uppercase;
+    margin-top:8px;
+  }
+  .carriere .side ul{
+    margin-top:22px;list-style:none;display:grid;gap:12px;
+  }
+  .carriere .side li{
+    display:flex;justify-content:space-between;
+    border-bottom:1px dashed rgba(243,231,207,0.3);padding-bottom:10px;
+    font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;
+  }
+  .carriere .side li b{color:var(--coral);font-weight:600;}
+
+  /* ---------- ACADÉMIE ---------- */
+  .academie{background:var(--ink);color:var(--cream);position:relative;overflow:hidden;}
+  .academie .grid{
+    display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;
+  }
+  .academie h2{
+    font-family:'Anton',sans-serif;font-size:clamp(56px,8vw,140px);line-height:0.85;
+    text-transform:uppercase;letter-spacing:-0.01em;
+  }
+  .academie h2 em{font-style:normal;color:var(--orange);}
+  .academie .body{font-size:17px;line-height:1.65;margin-top:24px;max-width:540px;color:rgba(243,231,207,0.85);}
+  .acad-features{
+    margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  }
+  .acad-feat{
+    border:1.5px solid rgba(243,231,207,0.25);
+    border-radius:12px;padding:20px;
+    background:rgba(255,255,255,0.02);
+  }
+  .acad-feat .n{
+    font-family:'Anton',sans-serif;font-size:42px;color:var(--coral);line-height:1;
+  }
+  .acad-feat .l{
+    margin-top:10px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.95;
+  }
+  .acad-feat p{margin-top:8px;font-size:14px;line-height:1.55;opacity:0.88;}
+  .academie .photo-frame{
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 12px, transparent 12px 24px),
+      linear-gradient(180deg, var(--cobalt), var(--cobalt-deep));
+    color:var(--cream);
+  }
+  .academie .photo-frame .ph-label{background:var(--coral);color:var(--ink);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--paper);}
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:48px;
+  }
+  .info-card{
+    border:2px solid var(--ink);border-radius:14px;
+    padding:28px 24px;background:var(--paper);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .info-card:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 0 var(--ink);}
+  .info-card .ic{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--cobalt);color:var(--cream);
+    display:grid;place-items:center;font-family:'Archivo Black',sans-serif;
+    margin-bottom:18px;border:2px solid var(--ink);
+  }
+  .info-card.orange .ic{background:var(--orange);color:var(--ink);}
+  .info-card.coral .ic{background:var(--coral);color:var(--ink);}
+  .info-card h4{
+    font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:-0.01em;
+  }
+  .info-card p{margin-top:8px;font-size:15px;line-height:1.5;}
+  .info-card .meta{
+    margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;
+    text-transform:uppercase;opacity:0.6;
+  }
+
+  .big-cta{
+    background:var(--coral);
+    border:2px solid var(--ink);border-radius:24px;
+    padding:64px 48px;text-align:center;
+    box-shadow:12px 12px 0 0 var(--ink);
+    position:relative;overflow:hidden;
+  }
+  .big-cta h3{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(64px,10vw,160px);line-height:0.85;
+    text-transform:uppercase;letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .big-cta h3 em{font-style:normal;color:var(--ink);text-decoration:underline;text-underline-offset:6px;}
+  .big-cta p{
+    margin-top:18px;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;
+  }
+  .big-cta .btn-row{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--ink);color:var(--cream);
+    border:2px solid var(--ink);
+    padding:18px 30px;border-radius:999px;
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:15px;letter-spacing:0.06em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 0 var(--cobalt);}
+  .btn-secondary{
+    background:transparent;color:var(--ink);
+    border:2px solid var(--ink);
+    padding:18px 30px;border-radius:999px;
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:15px;letter-spacing:0.06em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:all .15s;
+  }
+  .btn-secondary:hover{background:var(--ink);color:var(--cream);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--cobalt-deep);color:var(--cream);
+    padding:80px 28px 32px;
+    position:relative;overflow:hidden;
+  }
+  .footer-mega{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(80px,16vw,240px);line-height:0.82;text-transform:uppercase;
+    letter-spacing:-0.02em;color:var(--cream);
+    text-align:center;
+    border-bottom:1.5px solid rgba(243,231,207,0.25);
+    padding-bottom:36px;
+  }
+  .footer-mega em{font-style:normal;color:var(--coral);}
+  .footer-grid{
+    max-width:1280px;margin:36px auto 0;
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;
+  }
+  .foot-col h5{
+    font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--coral);margin-bottom:14px;
+  }
+  .foot-col a{
+    display:block;font-size:14px;padding:6px 0;opacity:0.85;
+  }
+  .foot-col a:hover{opacity:1;color:var(--orange);}
+  .foot-brand{
+    display:flex;align-items:center;gap:12px;margin-bottom:14px;
+    font-family:'Archivo Black',sans-serif;font-size:22px;
+  }
+  .foot-tag{font-size:14px;line-height:1.55;opacity:0.75;max-width:300px;}
+  .foot-bottom{
+    max-width:1280px;margin:40px auto 0;
+    border-top:1.5px solid rgba(243,231,207,0.2);padding-top:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;
+    opacity:0.9;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    .hero{padding:100px 20px 0;}
+    .hero-grid{grid-template-columns:1fr;gap:0;}
+    .gif-card{position:relative;top:auto;right:auto;width:200px;margin-bottom:18px;}
+    .palm.left{display:none;}
+    .palm.right-bg{width:160px;opacity:0.25;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(2){border-right:0;}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1.5px solid rgba(243,231,207,0.25);}
+    section{padding:80px 20px;}
+    .histoire .grid,.carriere .grid,.academie .grid{grid-template-columns:1fr;gap:40px;}
+    .svc-grid{grid-template-columns:1fr 1fr;}
+    .ba-grid{grid-template-columns:1fr;}
+    .ig-grid{grid-template-columns:repeat(2,1fr);}
+    .acad-features{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .svc-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#top" class="brand">
+    <span>SYA BARBER</span>
+  </a>
+  <div class="nav-links">
+    <a href="#histoire">Histoire</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#carriere">Carrière</a>
+    <a href="#academie">Académie</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="cta-btn" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+    Réservez Maintenant
+    <span aria-hidden="true">→</span>
+  </a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <img src="assets/palm.png" class="palm right-bg" alt="" />
+  <img src="assets/palm.png" class="palm left" alt="" />
+
+  <div class="hero-grid">
+    <a class="gif-card" href="https://sya-barber.square.site" target="_blank" rel="noopener" aria-label="Réservez maintenant">
+      <div class="gif-thumb">
+        <img src="assets/vibe-energy.gif" alt="Vibe Energy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        <div class="gif-overlay">
+          <span class="ov-text">Book the chair</span>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="hero-left">
+      <div class="hero-tag-row">
+        <span class="pill"><span class="dot"></span>Caribbean Roots In Montréal</span>
+        <span class="pill solid">By Reservation Only</span>
+      </div>
+      <h1>
+        <span class="orange">Fresh</span>
+        <span class="orange">Cuts.</span>
+        <span class="cream">Great</span>
+        <span class="cream">Vibes.</span>
+      </h1>
+      <p class="hero-sub">
+        Salon de barbier signature au cœur de Montréal. Dirigé par une femme aux racines caribéennes — précision, style, et une vibe qui te ressemble. <br /><span class="mono">FR · EN · KREYÒL</span>
+      </p>
+    </div>
+
+    <div class="hero-illus-wrap">
+      <img src="assets/hero-illustration.png" class="hero-illus" alt="Sya Barber illustration" />
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="num">9+</div>
+      <div class="lbl">Signature Styles</div>
+    </div>
+    <div class="stat">
+      <div class="num">5★</div>
+      <div class="lbl">Avg. Rating</div>
+    </div>
+    <div class="stat">
+      <div class="num">MTL</div>
+      <div class="lbl">Plateau / Mile End</div>
+    </div>
+    <div class="stat">
+      <div class="num">3</div>
+      <div class="lbl">FR · EN · Kreyòl</div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Fresh Cuts <span class="star">★</span> Great Vibes <span class="star">★</span> Caribbean Soul <span class="star">★</span> Montréal Made <span class="star">★</span> Ladies & Gents <span class="star">★</span> By Reservation <span class="star">★</span></span>
+    <span>Fresh Cuts <span class="star">★</span> Great Vibes <span class="star">★</span> Caribbean Soul <span class="star">★</span> Montréal Made <span class="star">★</span> Ladies & Gents <span class="star">★</span> By Reservation <span class="star">★</span></span>
+  </div>
+</div>
+
+<!-- HISTOIRE -->
+<section class="histoire" id="histoire">
+  <div class="container">
+    <div class="grid">
+      <div class="photo-frame">
+        <span class="ph-label">[ Portrait — Sya au shop ]</span>
+      </div>
+      <div>
+        <div class="sec-num">01 / Histoire</div>
+        <h2>Une lame.<br/>Une <em>histoire.</em><br/>Une vibe.</h2>
+        <div class="body">
+          <p>Sya, c'est d'abord une fille de Montréal, élevée entre deux mondes. Le soleil d'Haïti dans la cuisine, le hip-hop dans les écouteurs, et toujours, ce besoin de créer quelque chose qui lui ressemble.</p>
+          <p>Le barbering, elle l'a appris à la dure — en regardant, en pratiquant, en refusant d'attendre la permission. Aujourd'hui, son salon, c'est un espace où chaque cut raconte quelque chose. Pas juste une coupe : une conversation, un soin, un respect.</p>
+          <p>Ici, on prend le temps. On parle <em>kreyòl</em>, anglais ou français. On écoute. Et on coupe avec la précision d'une artiste qui sait que les détails comptent.</p>
+        </div>
+        <div class="quote-card">
+          <p>Je voulais un endroit où mes racines, mon métier, et ma communauté pouvaient toutes prendre la même chaise.</p>
+          <div class="by">— Sya, fondatrice</div>
+        </div>
+        <div class="signature">
+          <span class="sig-mark">Sya</span>
+          <span>Fondatrice · Barbière · Mtl Est</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <img src="assets/palm.png" class="palm-deco" alt="" />
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num" style="color:var(--coral)">02 / Services & Tarifs</div>
+        <h2 class="sec-title" style="color:var(--cream)">La carte.</h2>
+      </div>
+      <p class="mono" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;max-width:340px;color:var(--orange);">
+        Tarifs en CAD · Taxes en sus · Réservation requise
+      </p>
+    </div>
+
+    <div class="svc-grid">
+      <a class="svc-card featured" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Haircut + Beard</h3>
+          <span class="price">$50</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-haircut-beard.jpg" alt="Haircut + Beard" /></div>
+        <p class="desc">Le combo signature. Coupe précision + taille de barbe sculptée à la lame.</p>
+        <span class="book">Réserver <span class="arr">→</span></span>
+      </a>
+
+      <a class="svc-card" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Haircut</h3>
+          <span class="price">$40</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-lineup.jpg" alt="Haircut" /></div>
+        <p class="desc">La base. Coupe classique adaptée à ta texture et ton style.</p>
+        <span class="book">Réserver <span class="arr">→</span></span>
+      </a>
+
+      <a class="svc-card" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Line Up</h3>
+          <span class="price">$25</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-lineup.jpg" alt="Line Up" /></div>
+        <p class="desc">Reset express : contours nets, lignes droites, fini propre.</p>
+        <span class="book">Réserver <span class="arr">→</span></span>
+      </a>
+
+      <a class="svc-card" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Line Up + Beard</h3>
+          <span class="price">$35</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-haircut-beard.jpg" alt="Line Up + Beard" /></div>
+        <p class="desc">Contours et barbe — le rafraîchissement entre deux coupes.</p>
+        <span class="book">Réserver <span class="arr">→</span></span>
+      </a>
+
+      <a class="svc-card" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Beard</h3>
+          <span class="price">$25</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-beard.jpg" alt="Beard" /></div>
+        <p class="desc">Sculpture, taille, finition à la lame chaude. Soin compris.</p>
+        <span class="book">Réserver <span class="arr">→</span></span>
+      </a>
+
+      <a class="svc-card" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Headshave + Beard</h3>
+          <span class="price">$40</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-headshave.jpg" alt="Headshave + Beard" /></div>
+        <p class="desc">Rasage du crâne complet + barbe. Lame impeccable, peau soignée.</p>
+        <span class="book">Réserver <span class="arr">→</span></span>
+      </a>
+
+      <a class="svc-card" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Youth Haircut</h3>
+          <span class="price">$35</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-youth.jpg" alt="Youth Haircut" /></div>
+        <p class="desc">Pour les juniors. Patience, écoute, coupe propre. 12 ans et moins.</p>
+        <span class="book">Réserver <span class="arr">→</span></span>
+      </a>
+
+      <a class="svc-card" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Woman Haircut</h3>
+          <span class="price">$45</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-woman.jpg" alt="Woman Haircut" /></div>
+        <p class="desc">Coupes courtes et taper féminins, fade, pixie. Le savoir-faire barber appliqué.</p>
+        <span class="book">Réserver <span class="arr">→</span></span>
+      </a>
+
+      <a class="svc-card addon" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+        <div class="top">
+          <h3>Design / Motif</h3>
+          <span class="price">+$10</span>
+        </div>
+        <div class="svc-illus"><img src="assets/svc-design.jpg" alt="Design / Motif" /></div>
+        <p class="desc">Add-on. Motif gravé à la lame — initiales, lignes, design custom.</p>
+        <span class="book">Ajouter <span class="arr">→</span></span>
+      </a>
+    </div>
+
+    <div class="svc-foot">
+      <span>★ Annulation 24h à l'avance · Dépôt non-remboursable après</span>
+      <a href="https://sya-barber.square.site" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700;">Voir disponibilités →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">03 / Portfolio</div>
+        <h2 class="sec-title">Le book.</h2>
+      </div>
+      <p class="mono" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;max-width:340px;">
+        Avant / Après — Captures réelles. Chaque tête est unique.
+      </p>
+    </div>
+
+    <div class="ba-grid">
+      <div class="ba-pair">
+        <div class="ba-half before"><span class="tag">AVANT</span></div>
+        <div class="ba-half after"><span class="tag">APRÈS</span></div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-half before"><span class="tag">AVANT</span></div>
+        <div class="ba-half after"><span class="tag">APRÈS</span></div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-half before"><span class="tag">AVANT</span></div>
+        <div class="ba-half after"><span class="tag">APRÈS</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-head">
+      <h3>@sya.barber</h3>
+      <a class="mono" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;" href="https://instagram.com/sya.barber" target="_blank" rel="noopener">Instagram Live →</a>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-tile t1"><div class="pat"></div><span class="ig-corner">01</span></div>
+      <div class="ig-tile t2"><div class="pat"></div><span class="ig-corner">02</span></div>
+      <div class="ig-tile t3"><div class="pat"></div><span class="ig-corner">03</span></div>
+      <div class="ig-tile t4"><div class="pat"></div><span class="ig-corner">04</span></div>
+      <div class="ig-tile t5"><div class="pat"></div><span class="ig-corner">05</span></div>
+      <div class="ig-tile t6"><div class="pat"></div><span class="ig-corner">06</span></div>
+      <div class="ig-tile t7"><div class="pat"></div><span class="ig-corner">07</span></div>
+      <div class="ig-tile t8"><div class="pat"></div><span class="ig-corner">08</span></div>
+    </div>
+
+    <div class="ig-foot">
+      <a class="pill-link" href="https://instagram.com/sya.barber" target="_blank" rel="noopener">
+        Voir plus sur @sya.barber <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CARRIÈRE -->
+<section class="carriere" id="carriere">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <div class="sec-num">04 / Carrière</div>
+        <h2>On cherche des <em>barbières.</em></h2>
+        <div class="body">
+          Sya Barber grandit — et on cherche des barbières qui partagent la même vision : précision, respect du client, et amour du métier. Si tu es une femme passionnée par le barbering et que tu veux évoluer dans un environnement qui te ressemble, on veut te connaître.
+        </div>
+        <div class="checks">
+          <div class="check-row"><span class="dot">✓</span> Environnement pensé pour les femmes du métier</div>
+          <div class="check-row"><span class="dot">✓</span> Clientèle fidèle, ambiance pro et chaleureuse</div>
+          <div class="check-row"><span class="dot">✓</span> Mentorat et croissance — on monte ensemble</div>
+        </div>
+        <div class="cta-area">
+          <a class="btn-primary" href="mailto:hello@sya-barber.com">Envoie-nous un message <span>→</span></a>
+        </div>
+      </div>
+
+      <aside class="side">
+        <div class="eyebrow">Profil recherché</div>
+        <h3>Tu te reconnais ?</h3>
+        <ul>
+          <li>Expérience <b>1 an+</b></li>
+          <li>Disponibilité <b>Flexible</b></li>
+          <li>Spécialités <b>Fade · Beard · Design</b></li>
+          <li>Langues <b>FR · EN · Kreyòl +</b></li>
+          <li>Statut <b>Chair rental</b></li>
+          <li>Localisation <b>MTL · Plateau</b></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ACADÉMIE -->
+<section class="academie" id="academie">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <div class="sec-num" style="color:var(--coral)">05 / Académie</div>
+        <h2>Apprends le <em>métier.</em></h2>
+        <div class="body">
+          Sya offre une formation barber dédiée aux femmes qui veulent entrer dans le métier — ou perfectionner leur lame. Apprends fondamentaux, fades, beard, design et business — encadrée par une professionnelle qui exerce tous les jours.
+        </div>
+        <div class="acad-features">
+          <div class="acad-feat">
+            <div class="n">01</div>
+            <div class="l">Le métier</div>
+            <p>Fondamentaux, technique, hygiène, posture. La base solide.</p>
+          </div>
+          <div class="acad-feat">
+            <div class="n">02</div>
+            <div class="l">Horaire flexible</div>
+            <p>Modules en soirée et fin de semaine — adapté à ta vie.</p>
+          </div>
+          <div class="acad-feat">
+            <div class="n">03</div>
+            <div class="l">Pro en exercice</div>
+            <p>Enseigné par Sya — les techniques utilisées chaque jour au shop.</p>
+          </div>
+        </div>
+        <div style="margin-top:36px;">
+          <a class="btn-primary" href="mailto:academie@sya-barber.com">En savoir plus <span>→</span></a>
+        </div>
+      </div>
+      <div class="photo-frame" style="aspect-ratio:4/4.5;">
+        <span class="ph-label">[ Photo formation — élève + Sya ]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">06 / Contact</div>
+        <h2 class="sec-title">Passe nous voir.</h2>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="info-card">
+        <div class="ic">📍</div>
+        <h4>Atelier</h4>
+        <p>Montréal · Plateau / Mile End</p>
+        <div class="meta">Adresse exacte communiquée à la réservation</div>
+      </div>
+      <div class="info-card orange">
+        <div class="ic">⏰</div>
+        <h4>Horaires</h4>
+        <p>Sur réservation uniquement</p>
+        <div class="meta">Mar — Sam · By appointment</div>
+      </div>
+      <div class="info-card coral">
+        <div class="ic">@</div>
+        <h4>Instagram</h4>
+        <p><a href="https://instagram.com/sya.barber" target="_blank" rel="noopener" style="text-decoration:underline;">@sya.barber</a></p>
+        <div class="meta">DM ouverts · réponses sous 24h</div>
+      </div>
+    </div>
+
+    <div class="big-cta">
+      <h3>Prêt.e à <em>réserver?</em></h3>
+      <p>Une lame. Une vibe. Une chaise qui t'attend.</p>
+      <div class="btn-row">
+        <a class="btn-primary" href="https://sya-barber.square.site" target="_blank" rel="noopener">
+          Réserver maintenant <span>→</span>
+        </a>
+        <a class="btn-secondary" href="https://instagram.com/sya.barber" target="_blank" rel="noopener">
+          @sya.barber
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mega">Sya <em>Barber.</em></div>
+  <div class="footer-grid">
+    <div class="foot-col">
+      <div class="foot-brand">
+        <span class="brand-mark">S</span>
+        <span>SYA BARBER</span>
+      </div>
+      <p class="foot-tag">Salon barbier signature à Montréal. Caribbean roots, Montréal soul. Cuts par réservation.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Naviguer</h5>
+      <a href="#histoire">Histoire</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+    </div>
+    <div class="foot-col">
+      <h5>Travailler</h5>
+      <a href="#carriere">Carrière</a>
+      <a href="#academie">Académie</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h5>Suivre</h5>
+      <a href="https://instagram.com/sya.barber" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://sya-barber.square.site" target="_blank" rel="noopener">Réservation</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Sya Barber · Montréal</span>
+    <span>FR · EN · Kreyòl</span>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav style
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Smooth-scroll helper for nav anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          window.scrollTo({top: el.offsetTop - 70, behavior: 'smooth'});
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
